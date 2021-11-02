@@ -1,0 +1,1502 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    background: radial-gradient( hsl(214, 47%, 23%), hsl(237, 49%, 15%) );
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+.header{
+    width: 40%;
+    height: 130px;
+    margin: 15px auto;
+    border: 1px solid hsl(217, 16%, 45%);
+    border-radius: 13px;
+    display: flex;
+    padding: 20px 20px;
+    justify-content: space-between;
+}
+.logo{
+    height: 90px;
+}
+.contador{
+    width: 22%;
+    height: 99px;
+    margin-top: -5px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    background: rgb(221, 226, 236);
+    text-align: center;
+}
+.titulo{
+    font-size: 17px;
+    margin-top: 12px;
+    color: hsl(229, 64%, 46%);
+    background: transparent;
+}
+.numero{
+    background: transparent;
+    font-size: 60px;
+    color: hsl(229, 25%, 31%);
+    margin-top: -10px;
+}
+/*-----------------------------------------------zona de iconos--------------------------------------------------*/
+.juego{
+    margin-top: 130px;
+    margin-left: 168px;
+    display: block;         
+}
+.juego.desaparece{
+    display:none;
+}
+.ruta{
+    display: flex;
+    margin: 140px;
+    margin-left: 529px;
+    width: 20%;
+    height: 300px;
+}
+.icono{
+    display: flex;
+    width: 60px;
+    height: 80px;
+}
+.piedraBtn{
+    margin-top: -290px;
+    margin-left: 590px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(349, 71%, 52%);
+    border-radius: 100px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.piedraBtn .icono{
+    transition: .3s;
+}
+.piedraBtn:hover{
+    padding: 40px 50px;
+    margin-left: 580px;
+    /*margin-top: -247px;*/
+    transition: 0.3s;
+}
+.piedraBtn:hover .icono{
+    width: 65px;
+    height: 85px;
+    transition: .3s;
+}
+.papelBtn{
+    margin-top: -500px;
+    margin-left: 460px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(230, 89%, 62%);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.papelBtn .icono{
+    transition: 0.3s;
+}
+.papelBtn:hover{
+    padding: 40px 50px;
+    margin-top: -500px;
+    margin-left: 450px;
+    transition: .3s;
+}
+.papelBtn:hover .icono{
+    width: 65px;
+    height: 85px;
+    transition: .3s;
+}
+.tijerasBtn{
+    margin-top: -500px;
+    margin-left: 725px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(39, 89%, 49%);
+    border-radius: 100px;
+    transition: 0.3s;
+}
+.tijerasBtn .icono{
+    transition: 0.3s;
+}
+.tijerasBtn:hover{
+    padding: 40px 50px;
+    margin-top: -500px;
+    margin-left: 715px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.rulesBtn{
+    position: absolute;
+    background: transparent;
+    color: #f3f3f3;
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 7px;
+    margin-left: 80%;
+    margin-top: -120px;
+    padding: 10px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    float: right;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.rulesBtn:hover{
+    background: white;
+    color: hsl(229, 64%, 46%);
+}
+/*-----------------------------------------------------REGLAS----------------------------------------------------*/
+body .modal{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.5);
+    transition: all 800ms ease;
+}
+.modal.activado{
+    display: block;
+}
+.ultima{
+  background: transparent;
+  width: 100%;
+  margin-left: -202px;
+  align-items: center;
+  position: absolute;
+  padding: 30px auto;
+  display: flex;
+  flex-direction: column;
+}
+.tareas{
+    display: none;
+    margin: 135px 665px;
+    align-items: center;
+    position: absolute;
+    padding: 30px 34px;
+    border: 1px solid #f3f3f3;
+    background: #f3f3f3;
+    border-radius: 12px;
+    z-index: 20;
+    transition: 0.5s;
+}
+.tareas img{
+    margin-left: -1px;
+}
+.tareas.aparece{
+    display: block;
+}
+.titulos{
+    font-size: 30px;
+    margin-left: 18px;
+    color: hsl(223, 13%, 31%); ;
+}
+.reglas{
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.cerrarBtn{
+    margin-top: -24px;
+    float: right;
+    margin-right: 10px;
+    display: flex;
+    cursor: pointer;
+}
+/*-----------------------------------------------decision del juego-----------------------------------------------*/
+
+.eleccion{
+    display: none;
+    width: 60%;
+    height: 550px;
+    margin:0 auto;
+    padding: 20px 25px;
+}
+.eleccion.muestra{
+    display: flex;
+}
+.valor{
+    font-size: 25px;
+    color: white;
+}
+.cuadro1{
+    width: 35%;
+    height: 400px;
+    margin-right: 40px; /*tentativo*/
+    text-align: center;
+    padding-top: 80px;
+}
+.user1{
+    width: 95%;
+    height: 240px;
+    margin: 30px auto;
+}
+.piedra1{
+    display:none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra1.aparece-piedra1{
+    display: block;
+}
+.icono1{
+    display: flex;
+    margin: -28px auto;
+    height: 70px;
+}
+.papel1{
+    display: none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel1.aparece-papel1{
+    display:block;
+}
+.icono2{
+    display: flex;
+    margin: -40px auto;
+    height: 90px;
+}
+.tijeras1{
+    display: none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras1.aparece-tijeras1{
+    display: block;
+}
+
+/*-------------------------------------------Boton del juego-------------------------------------------*/
+
+.reset{
+    width: 30%;
+    height: 400px;
+    text-align: center;
+    padding-top: 170px;
+}
+.decision{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.volver{
+    width: 100%;
+    font-size: 17px;
+    color:hsl(217, 16%, 45%);
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.volver:hover{
+    color:hsl(349, 70%, 56%);
+}
+/*-----------------------------------------------Cuadro 2---------------------------------------------------------*/
+
+.cuadro2{
+    width: 35%;
+    height: 400px;
+    margin-left: 40px;
+    text-align: center;
+    padding-top: 80px;
+}
+.user2{
+    width: 95%;
+    height: 240px;
+    margin: 30px auto;
+}
+.piedra2{
+    display:none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra2.aparece-piedra2{
+    display: block;
+}
+.papel2{
+    display: none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel2.aparece-papel2{
+    display: block;
+}
+.tijeras2{
+    display: none;
+    position: relative;
+    margin-left: 27px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras2.aparece-tijeras2{
+    display: block;
+}
+/*--------------------------------------------------desktop 1366px------------------------------------------------*/
+@media screen and (max-width:1366px){
+.juego{
+    margin: 160px -1px;
+
+    display: block;         
+}
+.juego.desaparece{
+    display:none;
+}
+.ruta{
+    display: flex;
+    margin: 110px 525px;
+    width: 20%;
+    height: 300px;
+}
+.icono{
+    display: flex;
+    width: 60px;
+    height: 80px;
+}
+.piedraBtn{
+    margin-top: -280px;
+    margin-left: 590px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(349, 71%, 52%);
+    border-radius: 100px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.piedraBtn .icono{
+    transition: .3s;
+}
+.piedraBtn:hover{
+    padding: 40px 50px;
+    margin-left: 580px;
+    /*margin-top: -247px;*/
+    transition: 0.3s;
+}
+.piedraBtn:hover .icono{
+    width: 65px;
+    height: 85px;
+    transition: .3s;
+}
+.papelBtn{
+    margin-top: -470px;
+    margin-left: 460px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(230, 89%, 62%);
+    border-radius: 100px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.papelBtn .icono{
+    transition: 0.3s;
+}
+.papelBtn:hover{
+    padding: 40px 50px;
+    margin-top: -480px;
+    margin-left: 450px;
+    transition: .3s;
+}
+.papelBtn:hover .icono{
+    width: 65px;
+    height: 85px;
+    transition: .3s;
+}
+.tijerasBtn{
+    margin-top: -470px;
+    margin-left: 725px;
+    position: absolute;
+    padding: 30px 40px;
+    display: flex;
+    border: 20px solid hsl(39, 89%, 49%);
+    border-radius: 100px;
+    transition: 0.3s;
+}
+.tijerasBtn .icono{
+    transition: 0.3s;
+}
+.tijerasBtn:hover{
+    padding: 40px 50px;
+    margin-top: -490px;
+    margin-left: 715px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.rulesBtn{
+    position: absolute;
+    background: transparent;
+    color: #f3f3f3;
+    border: 3px solid hsl(217, 16%, 45%);
+    border-radius: 7px;
+    margin-left: 80%;
+    margin-top: -130px;
+    padding: 10px 50px;
+    font-size: 18px;
+    font-weight: bold;
+    float: right;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.rulesBtn:hover{
+    background: white;
+    color: hsl(229, 64%, 46%);
+}
+/*-----------------------------------------------------REGLAS 1366px----------------------------------------------------*/
+body .modal{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.5);
+    transition: all 800ms ease;
+}
+.modal.activado{
+    display: block;
+}
+.ultima{
+  background: transparent;
+  width: 100%;
+  margin-left: -202px;
+  align-items: center;
+  position: absolute;
+  padding: 30px auto;
+  display: flex;
+  flex-direction: column;
+}
+.tareas{
+    display: none;
+    margin: 135px 496px;
+    align-items: center;
+    position: absolute;
+    padding: 30px 34px;
+    border: 1px solid #f3f3f3;
+    background: #f3f3f3;
+    border-radius: 12px;
+    z-index: 20;
+    transition: 0.5s;
+}
+.tareas img{
+    margin-left: -1px;
+}
+.tareas.aparece{
+    display: block;
+}
+.titulos{
+    font-size: 30px;
+    margin-left: 18px;
+    color: hsl(223, 13%, 31%); ;
+}
+.reglas{
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.cerrarBtn{
+    margin-top: -24px;
+    float: right;
+    margin-right: 10px;
+    display: flex;
+    cursor: pointer;
+}
+/*------------------------------------decision del juego 1366px-----------------------------------*/
+
+.eleccion{
+    display: none;
+    width: 60%;
+    height: 550px;
+    margin:0 auto;
+    padding: 20px 25px;
+}
+.eleccion.muestra{
+    display: flex;
+}
+.valor{
+    font-size: 25px;
+    color: white;
+}
+.cuadro1{
+    width: 35%;
+    height: 400px;
+    margin-right: 40px; /*tentativo*/
+    text-align: center;
+    padding-top: 80px;
+}
+.user1{
+    width: 95%;
+    height: 240px;
+    margin: 30px auto;
+}
+.piedra1{
+    display:none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra1.aparece-piedra1{
+    display: block;
+}
+.icono1{
+    display: flex;
+    margin: -28px auto;
+    height: 70px;
+}
+.papel1{
+    display: none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel1.aparece-papel1{
+    display:block;
+}
+.icono2{
+    display: flex;
+    margin: -40px auto;
+    height: 90px;
+}
+.tijeras1{
+    display: none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras1.aparece-tijeras1{
+    display: block;
+}
+
+/*-------------------------------------------Boton del juego 1366px-------------------------------------------*/
+
+.reset{
+    width: 30%;
+    height: 400px;
+    text-align: center;
+    padding-top: 170px;
+}
+.decision{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.volver{
+    width: 100%;
+    font-size: 17px;
+    color:hsl(217, 16%, 45%);
+    font-weight: bold;
+    padding: 15px 40px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.volver:hover{
+    color:hsl(349, 70%, 56%);
+}
+/*-----------------------------------------------Cuadro 2 1366px---------------------------------------------------------*/
+
+.cuadro2{
+    width: 35%;
+    height: 400px;
+    margin-left: 40px;
+    text-align: center;
+    padding-top: 80px;
+}
+.user2{
+    width: 95%;
+    height: 240px;
+    margin: 30px auto;
+}
+.piedra2{
+    display:none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra2.aparece-piedra2{
+    display: block;
+}
+.papel2{
+    display: none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel2.aparece-papel2{
+    display: block;
+}
+.tijeras2{
+    display: none;
+    position: relative;
+    margin-left: -6px;
+    height: 130px;
+    padding: 95px 60px;
+    background: white;
+    border: 25px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras2.aparece-tijeras2{
+    display: block;
+}
+}
+/*--------------------------------------------------Mobile-------------------------------------------------------*/
+
+/*--------------------------------------------------Mobile 375------------------------------------------------*/
+@media screen and (max-width:375px){
+    
+    .header{
+        width: 90%;
+        height: 100px;
+        margin: 15px auto;
+        border: 1px solid hsl(217, 16%, 45%);
+        border-radius: 13px;
+        display: flex;
+        padding: 20px 20px;
+        justify-content: space-between;
+    }
+    .logo img{
+        width: 80px;
+        height: 65px;
+    }
+    .contador{
+        width: 30%;
+        height: 69px;
+        margin-top: -5px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        background: rgb(221, 226, 236);
+        text-align: center;
+    }
+    .titulo{
+        font-size: 15px;
+        margin-top: 4px;
+        color: hsl(229, 64%, 46%);
+        background: transparent;
+    }
+    .numero{
+        background: transparent;
+        font-size: 45px;
+        color: hsl(229, 25%, 31%);
+        margin-top: -9px;
+    }
+    /*----------------------------------------Zona de iconos mobile 375------------------------------------------*/
+    .juego{
+        margin-top: -30px;
+        display: block;   /* pendiente por ponerle block para que se muestren los botones*/
+        margin-left: -110px;      /*Aparicion del juego y botones*/
+    }
+    .juego img{
+        width: 200px;
+        height: 200px;
+    }
+    .juego.desaparece{
+        display:none;
+    }
+    .ruta{
+        display: flex;
+        margin: 110px auto;
+        width: 17%;
+        height: 300px;
+    }
+    .icono{
+        display: flex;
+        width: 10px;
+        height: 30px;
+    }
+    .piedraBtn{
+        margin-top: -320px;
+        margin-left: 240px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(349, 71%, 52%);
+        border-radius: 100px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .piedraBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .piedraBtn:hover{
+        padding: 20px 25px;
+        margin-left: 235px;
+        transition: 0.3s;
+    }
+    .piedraBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+        transition: 0.3s;
+    }
+    .papelBtn{
+        margin-top: -460px;
+        margin-left: 170px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(230, 89%, 62%);
+        border-radius: 100px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .papelBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .papelBtn:hover{
+        padding: 20px 25px;
+        margin-top: -460px;
+        margin-left: 165px;
+        transition: .3s;
+    }
+    .papelBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+        transition: .3s;
+    }
+    .tijerasBtn{
+        margin-top: -460px;
+        margin-left: 317px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(39, 89%, 49%);
+        border-radius: 100px;
+        transition: 0.3s;
+    }
+    .tijerasBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .tijerasBtn:hover{
+        padding: 20px 25px;
+        margin-top: -460px;
+        margin-left: 312px;
+        transition: 0.3s;
+    }
+    .tijerasBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+    }
+    .rulesBtn{
+        position: absolute;
+        background: transparent;
+        color: #f3f3f3;
+        border: 3px solid hsl(217, 16%, 45%);
+        border-radius: 7px;
+        margin-left: 28%;
+        margin-top: -130px;
+        padding: 10px 50px;
+        font-size: 18px;
+        font-weight: bold;
+        float: right;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .rulesBtn:hover{
+        background: white;
+        color: hsl(229, 64%, 46%);
+    }
+    /*--------------------------------------decision del juego mobile 375------------------------------------------*/
+
+.eleccion{
+    display: none;
+    width: 90%;
+    height: 550px;
+    padding: 20px 40px;
+}
+.eleccion.muestra{
+    display: flex;
+}
+.valor{
+    margin-top: 80px;
+    font-size: 15px;
+    color: white;
+}
+.cuadro1{
+    width: 130px;
+    height: 150px;
+    margin-left: -15px;
+    position: absolute;
+    text-align: center;
+    padding-top: 80px;
+}
+.user1{
+    width: 200px;
+    height: 240px;
+    margin: 0 auto;
+}
+.piedra1{
+    display:none;
+    position: relative;
+    margin-left: 1px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra1.aparece-piedra1{
+    display: block;
+}
+.icono1{
+    display: flex;
+    margin: -18px auto;
+    height: 40px;
+}
+.papel1{
+    display:none;
+    position: relative;
+    margin-left: 1px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel1.aparece-papel1{
+    display:block;
+}
+.icono2{
+    display: flex;
+    margin: -18px auto;
+    height: 40px;
+}
+.tijeras1{
+    display:none;
+    position: relative;
+    margin-left: 1px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras1.aparece-tijeras1{
+    display: block;
+}
+
+/*----------------------------------------Boton del juego mobile 375--------------------------------------------*/
+
+.reset{
+    width: 90%;
+    height: 400px;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 60px;;
+}
+.decision{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.volver{
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    color:hsl(217, 16%, 45%);
+    font-weight: bold;
+    padding: 10px 69px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.volver:hover{
+    color:hsl(349, 70%, 56%);
+}
+/*-----------------------------------------------Cuadro 2---------------------------------------------------------*/
+
+.cuadro2{
+    width: 130px;
+    height: 150px;
+    margin-left: 145px;
+    position: absolute;
+    text-align: center;
+    padding-top: 80px;
+}
+.user2{
+    width: 100%;
+    height: 240px;
+    
+}
+.piedra2{
+    display: none;
+    position: relative;
+    margin-left: 1px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra2.aparece-piedra2{
+    display: block;
+}
+.papel2{
+    display: none;
+    position: relative;
+    margin-left: 7px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel2.aparece-papel2{
+    display: block;
+}
+.tijeras2{
+    display: none;
+    position: relative;
+    margin-left: 7px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras2.aparece-tijeras2{
+    display: block;
+}
+body .modal{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.5);
+    transition: all 800ms ease;
+}
+.modal.activado{
+    display: block;
+}
+.ultima{
+  background: transparent;
+  width: 100%;
+  margin-left: -202px;
+  align-items: center;
+  position: absolute;
+  padding: 30px auto;
+  display: flex;
+  flex-direction: column;
+}
+.tareas{
+    width: 90%;
+    height: 320px;
+    display: none;
+    margin: 120px 20px;
+    align-items: center;
+    position: absolute;
+    padding: 20px 15px;
+    background: #f3f3f3;
+    border-radius: 12px;
+    z-index: 20;
+    transition: 0.5s;
+}
+.tareas img{
+    width: 100%;
+    height: 200px;
+    margin-left: 3px;
+}
+.cerrar img{
+    width: 20px;
+    height: 20px;
+}
+.tareas.aparece{
+    display: block;
+}
+.titulos{
+    font-size: 20px;
+    margin-left: 18px;
+    color: hsl(223, 13%, 31%); ;
+}
+.reglas{
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.cerrarBtn{
+    margin-top: -24px;
+    float: right;
+    margin-right: 10px;
+    display: flex;
+    cursor: pointer;
+}
+    
+}
+
+/*------------------------------------------------otra resolucion--------------------------------------------------*/
+@media screen and (max-width:325px){
+    
+    .header{
+        width: 90%;
+        height: 100px;
+        margin: 15px auto;
+        border: 1px solid hsl(217, 16%, 45%);
+        border-radius: 13px;
+        display: flex;
+        padding: 20px 20px;
+        justify-content: space-between;
+    }
+    .logo img{
+        width: 80px;
+        height: 65px;
+    }
+    .contador{
+        width: 30%;
+        height: 69px;
+        margin-top: -5px;
+        border: 1px solid #ccc;
+        border-radius: 7px;
+        background: rgb(221, 226, 236);
+        text-align: center;
+    }
+    .titulo{
+        font-size: 15px;
+        margin-top: 4px;
+        color: hsl(229, 64%, 46%);
+        background: transparent;
+    }
+    .numero{
+        background: transparent;
+        font-size: 45px;
+        color: hsl(229, 25%, 31%);
+        margin-top: -9px;
+    }
+    /*----------------------------------Zona de iconos mobile--------------------------*/
+    .juego{
+        margin-top: -30px;
+        display: block;   /* pendiente por ponerle block para que se muestren los botones*/
+        margin-left: -122px;           /*Aparicion del juego y botones*/
+    }
+    .juego img{
+        width: 200px;
+        height: 200px;
+    }
+    .juego.desaparece{
+        display:none;
+    }
+    .ruta{
+        display: flex;
+        margin: 110px auto;
+        width: 17%;
+        height: 300px;
+    }
+    .icono{
+        display: flex;
+        width: 10px;
+        height: 30px;
+    }
+    .piedraBtn{
+        margin-top: -320px;
+        margin-left: 225px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(349, 71%, 52%);
+        border-radius: 100px;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .piedraBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .piedraBtn:hover{
+        padding: 20px 25px;
+        margin-left: 220px;
+        transition: 0.3s;
+    }
+    .piedraBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+        transition: 0.3s;
+    }
+    .papelBtn{
+        margin-top: -460px;
+        margin-left: 150px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(230, 89%, 62%);
+        border-radius: 100px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .papelBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .papelBtn:hover{
+        padding: 20px 25px;
+        margin-top: -460px;
+        margin-left: 145px;
+        transition: .3s;
+    }
+    .papelBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+        transition: .3s;
+    }
+    .tijerasBtn{
+        margin-top: -460px;
+        margin-left: 300px;
+        position: absolute;
+        padding: 20px 20px;
+        display: flex;
+        border: 13px solid hsl(39, 89%, 49%);
+        border-radius: 100px;
+        transition: 0.3s;
+    }
+    .tijerasBtn .icono{
+        width: 50px;
+        height: 50px;
+    }
+    .tijerasBtn:hover{
+        padding: 20px 25px;
+        margin-top: -460px;
+        margin-left: 295px;
+        transition: 0.3s;
+    }
+    .tijerasBtn:hover .icono{
+        width: 55px;
+        height: 60px;
+    }
+    .rulesBtn{
+        position: absolute;
+        background: transparent;
+        color: #f3f3f3;
+        border: 3px solid hsl(217, 16%, 45%);
+        border-radius: 7px;
+        margin-left: 25%;
+        margin-top: -130px;
+        padding: 10px 50px;
+        font-size: 18px;
+        font-weight: bold;
+        float: right;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+    .rulesBtn:hover{
+        background: white;
+        color: hsl(229, 64%, 46%);
+    }
+    /*---------------------------------------decision del juego mobile--------------------------------------------*/
+
+.eleccion{
+    display: none;
+    width: 90%;
+    height: 550px;
+    padding: 20px 15px;
+}
+.eleccion.muestra{
+    display: flex;
+}
+.valor{
+    margin-top: 80px;
+    font-size: 15px;
+    color: white;
+}
+.cuadro1{
+    width: 130px;
+    height: 150px;
+    margin-left: -15px;
+    position: absolute;
+    text-align: center;
+    padding-top: 80px;
+}
+.user1{
+    width: 200px;
+    height: 240px;
+    margin: 0 auto;
+}
+.piedra1{
+    display:none;
+    position: relative;
+    margin-left: 5px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra1.aparece-piedra1{
+    display: block;
+}
+.icono1{
+    display: flex;
+    margin: -18px auto;
+    height: 40px;
+}
+.papel1{
+    display:none;
+    position: relative;
+    margin-left: 5px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel1.aparece-papel1{
+    display:block;
+}
+.icono2{
+    display: flex;
+    margin: -18px auto;
+    height: 40px;
+}
+.tijeras1{
+    display:none;
+    position: relative;
+    margin-left: 5px;
+    margin-top: -160px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras1.aparece-tijeras1{
+    display: block;
+}
+
+/*-------------------------------------------Boton del juego mobile------------------------------------------*/
+
+.reset{
+    width: 90%;
+    height: 400px;
+    text-align: center;
+    margin-left: 10px;
+    margin-top: 60px;;
+}
+.decision{
+    font-size: 40px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.volver{
+    width: 100%;
+    font-size: 14px;
+    position: relative;
+    color:hsl(217, 16%, 45%);
+    font-weight: bold;
+    padding: 10px 69px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.volver:hover{
+    color:hsl(349, 70%, 56%);
+}
+/*-----------------------------------------------Cuadro 2---------------------------------------------------------*/
+
+.cuadro2{
+    width: 130px;
+    height: 150px;
+    margin-left: 145px;
+    position: absolute;
+    text-align: center;
+    padding-top: 80px;
+}
+.user2{
+    width: 100%;
+    height: 240px;
+    
+}
+.piedra2{
+    display: none;
+    position: relative;
+    margin-left: 1px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(349, 70%, 56%);
+    border-radius: 190px;
+    transition: 0.3s;
+}
+.piedra2.aparece-piedra2{
+    display: block;
+}
+.papel2{
+    display: none;
+    position: relative;
+    margin-left: 7px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(230, 89%, 65%);
+    border-radius: 190px;
+}
+.papel2.aparece-papel2{
+    display: block;
+}
+.tijeras2{
+    display: none;
+    position: relative;
+    margin-left: 7px;
+    margin-top: -189px;
+    height: 80px;
+    padding: 50px 30px;
+    background: white;
+    border: 13px solid hsl(40, 84%, 53%);
+    border-radius: 190px;
+}
+.tijeras2.aparece-tijeras2{
+    display: block;
+}
+    
+body .modal{
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+}
+.modal{
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    background: rgba(0,0,0,0.5);
+    transition: all 800ms ease;
+}
+.modal.activado{
+    display: block;
+}
+.ultima{
+  background: transparent;
+  width: 100%;
+  margin-left: -202px;
+  align-items: center;
+  position: absolute;
+  padding: 30px auto;
+  display: flex;
+  flex-direction: column;
+}
+.tareas{
+    width: 90%;
+    height: 320px;
+    display: none;
+    margin: 120px 17px;
+    align-items: center;
+    position: absolute;
+    padding: 20px 15px;
+    background: #f3f3f3;
+    border-radius: 12px;
+    z-index: 20;
+    transition: 0.5s;
+}
+.tareas img{
+    width: 100%;
+    height: 200px;
+    margin-left: 3px;
+}
+.cerrar img{
+    width: 20px;
+    height: 20px;
+}
+.tareas.aparece{
+    display: block;
+}
+.titulos{
+    font-size: 20px;
+    margin-left: 18px;
+    color: hsl(223, 13%, 31%); ;
+}
+.reglas{
+    margin-top: 40px;
+    margin-left: 30px;
+}
+.cerrarBtn{
+    margin-top: -24px;
+    float: right;
+    margin-right: 10px;
+    display: flex;
+    cursor: pointer;
+}
+}
+
+

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/estilo4.css">
+    <script src="https://kit.fontawesome.com/9afb22eef0.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+    <title>Reto 4</title>
+</head>
+<body>
+   <div class="padre">
+       <header class="header">
+          <div class="logo">
+              <img src="imagenes/logo.svg" alt="">
+          </div>
+          <div class="contador" id="contador">
+            <h2 class="titulo" id="titulo">SCORE</h2>
+             <p class="numero" id="numero">0</p>
+          </div>
+       </header>
+
+       <section class="juego" id="juego">
+           <div class="ruta" id="ruta">
+               <img src="imagenes/bg-triangle.svg" alt="">
+           </div>
+           <button class="piedraBtn" id="piedra">
+               <img class="icono" id="icono" src="imagenes/icon-rock.svg" alt="">
+           </button>
+           <button class="papelBtn" id="papel">
+               <img class="icono" id="icono" src="imagenes/icon-paper.svg" alt="">
+           </button>
+           <button class="tijerasBtn" id="tijeras">
+               <img class="icono" id="icono" src="imagenes/icon-scissors.svg" alt="">
+           </button>
+       </section>
+
+       <section class="eleccion" id="eleccion">
+            <div class="cuadro1" id="cuadro1">
+                <h2 class="valor" id="valor">TU ELEGISTE</h2>
+                <div class="user1" id="user1">
+                    <button class="piedra1" id="piedra1">
+                        <img class="icono1" id="userSelection" src="imagenes/icon-rock.svg" alt="">
+                    </button>
+                    <button class="papel1" id="papel1">
+                        <img class="icono2" id="icono2" src="imagenes/icon-paper.svg" alt="">
+                    </button>
+                    <button class="tijeras1" id="tijeras1">
+                        <img class="icono2" id="icono2" src="imagenes/icon-scissors.svg" alt="">
+                    </button>
+                </div>
+            </div>
+            <div class="reset" id="reset">
+                <h2 class="decision" id="decision">titulo</h2>
+                <button class="volver" id="volver" value="button">PLAY AGAIN</button>
+            </div>
+            <div class="cuadro2" id="cuadro2">
+                <h2 class="valor" id="valor">LA CASA ELIGIO</h2>
+                <div class="user2" id="user2">
+                    <button class="piedra2" id="piedra2">
+                        <img class="icono1" id="machineSelection" src="imagenes/icon-rock.svg" alt="">
+                    </button>
+                    <button class="papel2" id="papel2">
+                        <img class="icono2" id="icono2" src="imagenes/icon-paper.svg" alt="">
+                    </button>
+                    <button class="tijeras2" id="tijeras2">
+                        <img class="icono2" id="icono2" src="imagenes/icon-scissors.svg" alt="">
+                    </button>
+                </div>
+            </div>
+       </section>
+
+       <section class="ultima">
+           <div class="modal" id="modal">
+            <div class="tareas" id="tareas">
+                <h3 class="titulos">RULES</h3>
+                <div class="cerrar">
+                    <img class="cerrarBtn" id="cerrarBtn" src="/imagenes/icon-close.svg" alt="">
+                </div>
+                <img class="reglas" id="reglas" src="/imagenes/image-rules.svg" alt="">
+            </div>
+           </div>
+       </section>
+       
+       <div class="">
+           <button class="rulesBtn rules1" id="rulesBtn" value="button">RULES</button>
+       </div>
+   </div>
+   <script src="lenguaje/lenguaje.js"></script>
+</body>
+</html>
